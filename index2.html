@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Equipamentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        /*
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+            */
+        
+            h2{
+                text-align: center;
+            }
+        input {
+            width: 30%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #020202;
+            text-align: left;
+        }
+        th {
+            background: #007BFF;
+            color: white;
+        }
+        tr:hover {
+            background: #d8d6d6bb;
+        }
+    </style>
+</head>
+<body>
+<h2> Controle geral de equipamentos de reuso</h2>
+    <input type="text" id="searchInput" onkeyup="filtrarTabela()" placeholder="Pesquisar...">
+    
+    <table id="tabelaEquipamentos" border="1">
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Nome</th>
+                <th>MAC</th>
+                <th>SN</th>
+                <th>Modelo</th>
+                <th>ID</th>
+                <th>Tipo de Equipamento</th>
+                <th>Patrimônio</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>	<td>	1	</td>	<td>	Intelbras	</td>	<td>	D8365FD24C31	</td>	<td>	ITBSFD24C31	</td>	<td>	AX1800	</td>	<td>	268	</td>	<td>	ONT	</td>	<td>	001119	</td> <td>Funcionando</td></tr>
+            <tr>	<td>	2	</td>	<td>	Intelbras	</td>	<td>	30E1F1A19CF1	</td>	<td>	KYQL2803368JL	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>	ROTEADOR	</td>	<td>	001120	</td><td></td>	</tr>
+            <tr>	<td>	3	</td>	<td>	Intelbras	</td>	<td>	30E1F1155672	</td>	<td>	KYQL286555W	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>	ROTEADOR	</td>	<td>	001121	</td>	</tr>
+            <tr>	<td>	4	</td>	<td>	Intelbras	</td>	<td>	30E1F13C06E8	</td>	<td>	ITBSF13C06E8	</td>	<td>	WIFIBER6-1200	</td>	<td>	247	</td>	<td>	ONT	</td>	<td>	001122	</td>	</tr>
+            <tr>	<td>	5	</td>	<td>	Shoreline	</td>	<td>	A8BF3C51835E	</td>	<td>	2012220610001920	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001123	</td>	</tr>
+            <tr>	<td>	6	</td>	<td>	Shoreline	</td>	<td>	A8BF3C3D5916	</td>	<td>	201222129000842	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001124	</td>	</tr>
+            <tr>	<td>	7	</td>	<td>	Phyhome	</td>	<td>	2057AF340C88	</td>	<td>	FTHC0A161500	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001125	</td>	</tr>
+            <tr>	<td>	8	</td>	<td>	Phyhome	</td>	<td>	2057AF358278	</td>	<td>	FTHC0A173466	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001126	</td>	</tr>
+            <tr>	<td>	9	</td>	<td>	Phyhome	</td>	<td>	2057AF34C658	</td>	<td>	FTHC0A167446	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001127	</td>	</tr>
+            <tr>	<td>	10	</td>	<td>	Phyhome	</td>	<td>	2057AF359BC8	</td>	<td>	FTHC0A174276	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001128	</td>	</tr>
+            <tr>	<td>	11	</td>	<td>	Phyhome	</td>	<td>	2057AF347210	</td>	<td>	FTHC0A164749	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001129	</td>	</tr>
+            <tr>	<td>	12	</td>	<td>	Phyhome	</td>	<td>	2057AF34AD88	</td>	<td>	FTHC0A166652 	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001130	</td>	</tr>
+            <tr>	<td>	13	</td>	<td>	Phyhome	</td>	<td>	2057AF341BA8	</td>	<td>	FTHC0A161984	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001131	</td>	</tr>
+            <tr>	<td>	14	</td>	<td>	Phyhome	</td>	<td>	2057AF33DF28	</td>	<td>	FTHC0A160048	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001132	</td>	</tr>
+            <tr>	<td>	15	</td>	<td>	Phyhome	</td>	<td>	2057AF3585C0	</td>	<td>	FTHC0A173571	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001133	</td>	</tr>
+            <tr>	<td>	16	</td>	<td>	Phyhome	</td>	<td>	2057AF34E918	</td>	<td>	FTHC0A168558	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001134	</td>	</tr>
+            <tr>	<td>	17	</td>	<td>	Phyhome	</td>	<td>	2057AF350F38	</td>	<td>	FTHC0A169778	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001135	</td>	</tr>
+            <tr>	<td>	18	</td>	<td>	Phyhome	</td>	<td>	2057AF360A68	</td>	<td>	FTHCAF360A68	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001136	</td>	</tr>
+            <tr>	<td>	19	</td>	<td>	Phyhome	</td>	<td>	2057AF353730	</td>	<td>	FTHC0A171057	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001137	</td>	</tr>
+            <tr>	<td>	20	</td>	<td>	Phyhome	</td>	<td>	2057AF3509F0	</td>	<td>	FTHC0A169609	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001138	</td>	</tr>
+            <tr>	<td>	21	</td>	<td>	Phyhome	</td>	<td>	2057AF34A0D0	</td>	<td>	FTHC0A166245	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001139	</td>	</tr>
+            <tr>	<td>	22	</td>	<td>	Phyhome	</td>	<td>	2057AF359BF9	</td>	<td>	FTHC0A174282	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001140	</td>	</tr>
+            <tr>	<td>	23	</td>	<td>	Phyhome	</td>	<td>	2057AF347438	</td>	<td>	FTHC0A164818	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001141	</td>	</tr>
+            <tr>	<td>	24	</td>	<td>	Phyhome	</td>	<td>	2057AF367888	</td>	<td>	FTHCAF367888	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001142	</td>	</tr>
+            <tr>	<td>	25	</td>	<td>	Phyhome	</td>	<td>	2057AF33DF58	</td>	<td>	FTHC0A160054	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001143	</td>	</tr>
+            <tr>	<td>	26	</td>	<td>	Phyhome	</td>	<td>	2057AF3475A0	</td>	<td>	FTHC0A164863	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001144	</td>	</tr>
+            <tr>	<td>	27	</td>	<td>	Phyhome	</td>	<td>	2057AF343A20	</td>	<td>	FTHC0A162959	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001145	</td>	</tr>
+            <tr>	<td>	28	</td>	<td>	Phyhome	</td>	<td>	2057AF3672A0	</td>	<td>	FTHCAF3672A0	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001146	</td>	</tr>
+            <tr>	<td>	29	</td>	<td>	Phyhome	</td>	<td>	2057AF7D33D0	</td>	<td>	FTHCAF7D33D0	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001147	</td>	</tr>
+            <tr>	<td>	30	</td>	<td>	Phyhome	</td>	<td>	2057AF33E610	</td>	<td>	FTHC0A160269	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001148	</td>	</tr>
+            <tr>	<td>	31	</td>	<td>	Phyhome	</td>	<td>	2057AF35B100	</td>	<td>	FTHC0A174955	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001149	</td>	</tr>
+            <tr>	<td>	32	</td>	<td>	Phyhome	</td>	<td>	2057AF33EA58	</td>	<td>	FTHC0A160406	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001150	</td>	</tr>
+            <tr>	<td>	33	</td>	<td>	Shoreline	</td>	<td>	A8BF3C4628AA	</td>	<td>	2012210904001620	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001151	</td>	</tr>
+            <tr>	<td>	34	</td>	<td>	Shoreline	</td>	<td>	A8BF3C517C5E	</td>	<td>	2O12220610001696	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001152	</td>	</tr>
+            <tr>	<td>	35	</td>	<td>	Shoreline	</td>	<td>	A8BF3C4137C2	</td>	<td>	20122301000379	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001153	</td>	</tr>
+            <tr>	<td>	36	</td>	<td>	Zyxel	</td>	<td>	48EDE67F9290	</td>	<td>	S240Y08058025	</td>	<td>	AX3000	</td>	<td>		</td>	<td>	ONT	</td>	<td>	001154	</td>	</tr>
+            <tr>	<td>	37	</td>	<td>	Zyxel	</td>	<td>	48EDE67FC5D0	</td>	<td>	S240Y08058845	</td>	<td>	AX3000	</td>	<td>		</td>	<td>	ONT	</td>	<td>	001155	</td>	</tr>
+            <tr>	<td>	38	</td>	<td>	Zyxel	</td>	<td>	1433750EDC28	</td>	<td>	S230Y2901261	</td>	<td>	AX3000 	</td>	<td>		</td>	<td>	ROTEADOR	</td>	<td>	001156	</td>	</tr>
+            <tr>	<td>	39	</td>	<td>	Intelbras	</td>	<td>	30E1F1A1A15F	</td>	<td>	KYQL2803449T7	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>	ROTEADOR	</td>	<td>	001157	</td>	</tr>
+            <tr>	<td>	40	</td>	<td>	ZYXEL	</td>	<td>	48EDE6C705F0	</td>	<td>	S240Y12050530	</td>	<td>	AX3000 	</td>	<td>		</td>	<td>	ONT	</td>	<td>	001158	</td>	</tr>
+            <tr>	<td>	41	</td>	<td>	ZYXEL	</td>	<td>	48EDE67FFF20	</td>	<td>	S240Y08059762	</td>	<td>	AX3000 	</td>	<td>		</td>	<td>	ONT	</td>	<td>	001159	</td>	</tr>
+            <tr>	<td>	42	</td>	<td>	INTELBRAS	</td>	<td>	D8365FD2D841	</td>	<td>	ITBS5FD2D1841	</td>	<td>	AX1800	</td>	<td>	268	</td>	<td>	ONT	</td>	<td>	001160	</td>	</tr>
+            <tr>	<td>	43	</td>	<td>	INTELBRAS	</td>	<td>	D8365FD28CD8	</td>	<td>	ITBS5FDCDB8	</td>	<td>	AX1800	</td>	<td>	268	</td>	<td>	ONT	</td>	<td>	001161	</td>	</tr>
+            <tr>	<td>	44	</td>	<td>	INTELBRAS	</td>	<td>	D8365FD248B6	</td>	<td>	ITBS5FD248B6	</td>	<td>	AX1800	</td>	<td>	268	</td>	<td>	ONT	</td>	<td>	001162	</td>	</tr>
+            <tr>	<td>	45	</td>	<td>	INTELBRAS	</td>	<td>	D8365FD2EAD1	</td>	<td>	IBTS5FD2EAD1	</td>	<td>	AX1800	</td>	<td>	268	</td>	<td>	ONT	</td>	<td>	001163	</td>	</tr>
+            <tr>	<td>	46	</td>	<td>	INTELBRAS	</td>	<td>	30E1F178E03D	</td>	<td>	ITBSF178E03D	</td>	<td>	WIFIBER6-1200R	</td>	<td>	247	</td>	<td>		</td>	<td>	001164	</td>	</tr>
+            <tr>	<td>	47	</td>	<td>	INTELBRAS	</td>	<td>	30E1F179BFA6	</td>	<td>	ITBSF179BFA6	</td>	<td>	WIFIBER6-1200R	</td>	<td>	247	</td>	<td>		</td>	<td>	001165	</td>	</tr>
+            <tr>	<td>	48	</td>	<td>	INTELBRAS	</td>	<td>	30E1F13C0421	</td>	<td>	ITBSF13C0421	</td>	<td>	WIFIBER6-1200R	</td>	<td>	247	</td>	<td>		</td>	<td>	001166	</td>	</tr>
+            <tr>	<td>	49	</td>	<td>	INTELBRAS	</td>	<td>	30E1F13C07A5	</td>	<td>	ITBSF13C07A5	</td>	<td>	WIFIBER6-1200R	</td>	<td>	247	</td>	<td>		</td>	<td>	001167	</td>	</tr>
+            <tr>	<td>	50	</td>	<td>	INTELBRAS	</td>	<td>	30EF12D8FAA	</td>	<td>	GUTL148595X4	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>		</td>	<td>	001168	</td>	</tr>
+            <tr>	<td>	51	</td>	<td>	INTELBRAS	</td>	<td>	30E1F12EC6B3	</td>	<td>	GUTL15002396W	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>		</td>	<td>	001169	</td>	</tr>
+            <tr>	<td>	52	</td>	<td>	INTELBRAS	</td>	<td>	30E1F12EC74B	</td>	<td>	GUTLL15002240M	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>		</td>	<td>	001170	</td>	</tr>
+            <tr>	<td>	53	</td>	<td>	INTELBRAS	</td>	<td>	30E1F12D4122	</td>	<td>	GUTL1F408189TL	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>		</td>	<td>	001171	</td>	</tr>
+            <tr>	<td>	54	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C516856	</td>	<td>	2012220610001055	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001172	</td>	</tr>
+            <tr>	<td>	55	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C51C0DE	</td>	<td>	2012220614001385	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001173	</td>	</tr>
+            <tr>	<td>	56	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C518306	</td>	<td>	2012220610001909	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001174	</td>	</tr>
+            <tr>	<td>	57	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C42D24E	</td>	<td>	2012230309000264	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001175	</td>	</tr>
+            <tr>	<td>	58	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C3BCD05	</td>	<td>	2012210427000573	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001176	</td>	</tr>
+            <tr>	<td>	59	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C53EB4E	</td>	<td>	2012220722001558	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001177	</td>	</tr>
+            <tr>	<td>	60	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4D8FDE	</td>	<td>	2012220418001169	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001178	</td>	</tr>
+            <tr>	<td>	61	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C463612	</td>	<td>	201210904002046	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001179	</td>	</tr>
+            <tr>	<td>	62	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C45CA6A	</td>	<td>	2012210825003493	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001180	</td>	</tr>
+            <tr>	<td>	63	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C51833E	</td>	<td>	2012220610001920	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001181	</td>	</tr>
+            <tr>	<td>	64	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C5645C6	</td>	<td>	2012220811000810	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001182	</td>	</tr>
+            <tr>	<td>	65	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C458D42	</td>	<td>	2012210825001540	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001183	</td>	</tr>
+            <tr>	<td>	66	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4D902E	</td>	<td>	2012220418001180	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001184	</td>	</tr>
+            <tr>	<td>	67	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4FB966	</td>	<td>	2012220525001230	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001185	</td>	</tr>
+            <tr>	<td>	68	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4CDA56	</td>	<td>	2012222043000690	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001186	</td>	</tr>
+            <tr>	<td>	69	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4CDA46	</td>	<td>	2012220403000680	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001187	</td>	</tr>
+            <tr>	<td>	70	</td>	<td>	PHYHOME	</td>	<td>	2057AF359738	</td>	<td>	FTHC0A174130	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001188	</td>	</tr>
+            <tr>	<td>	71	</td>	<td>	PHYHOME	</td>	<td>	205AF352C40	</td>	<td>	FTHC0A170707	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001189	</td>	</tr>
+            <tr>	<td>	72	</td>	<td>	INTELBRAS	</td>	<td>	30E1F1A1A285	</td>	<td>	KYQL2803470M1	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>		</td>	<td>	001190	</td>	</tr>
+            <tr>	<td>	73	</td>	<td>	INTELBRAS	</td>	<td>	30E1F1A1A25B	</td>	<td>	KYQL28034674A	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>		</td>	<td>	001191	</td>	</tr>
+            <tr>	<td>	74	</td>	<td>	INTELBRAS	</td>	<td>	30E1F12D401A	</td>	<td>	GUTL1408223RQ	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>		</td>	<td>	001192	</td>	</tr>
+            <tr>	<td>	75	</td>	<td>	INTELBRAS	</td>	<td>	443B321A992	</td>	<td>	OSII50227695M	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001193	</td>	</tr>
+            <tr>	<td>	76	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC93E	</td>	<td>	OSII605335XS	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001194	</td>	</tr>
+            <tr>	<td>	77	</td>	<td>	INTELBRAS	</td>	<td>	44B3221A23A	</td>	<td>	OSII494205X2	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001195	</td>	</tr>
+            <tr>	<td>	78	</td>	<td>	INTELBRAS	</td>	<td>	448B324BDA10	</td>	<td>	ITBS324BDA10	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001196	</td>	</tr>
+            <tr>	<td>	79	</td>	<td>	INTELBRAS	</td>	<td>	D8778B6A4CA5	</td>	<td>	ITBS8B6A4CA5	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001197	</td>	</tr>
+            <tr>	<td>	60	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D4CFDE5	</td>	<td>	ITBS0D4CFDE5	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001198	</td>	</tr>
+            <tr>	<td>	61	</td>	<td>	INTELBRAS	</td>	<td>	443B327F53C8	</td>	<td>	ITBS327F53C8	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001199	</td>	</tr>
+            <tr>	<td>	62	</td>	<td>	INTELBRAS	</td>	<td>	443B2815204	</td>	<td>	ITBS32815204	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001200	</td>	</tr>
+            <tr>	<td>	63	</td>	<td>	INTELBRAS	</td>	<td>	088FE89EBAEB	</td>	<td>	OSII4115755VR	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001201	</td>	</tr>
+            <tr>	<td>	64	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC954	</td>	<td>	OSII160533033	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001202	</td>	</tr>
+            <tr>	<td>	65	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C41378A	</td>	<td>	2012230301000372	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>		</td>	<td>	001203	</td>	</tr>
+            <tr>	<td>	66	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C458D12	</td>	<td>	201210825001530	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>		</td>	<td>	001204	</td>	</tr>
+            <tr>	<td>	67	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C42B0C2	</td>	<td>	201223036003243	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>		</td>	<td>	001205	</td>	</tr>
+            <tr>	<td>	68	</td>	<td>	INTELBRAS	</td>	<td>	D8365FD29FF8	</td>	<td>	ITBS5FD29FF8	</td>	<td>	AX1800	</td>	<td>	268	</td>	<td>		</td>	<td>	001206	</td>	</tr>
+            <tr>	<td>	69	</td>	<td>	INTELBRAS	</td>	<td>	30E1F16D6F6E	</td>	<td>	GUTL2507390AK	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>		</td>	<td>	001207	</td>	</tr>
+            <tr>	<td>	70	</td>	<td>	ZYXEL	</td>	<td>	48EDE67FD080	</td>	<td>	S240Y08059016	</td>	<td>	AX3000 (ONT)   	</td>	<td>		</td>	<td>		</td>	<td>	001208	</td>	</tr>
+            <tr>	<td>	71	</td>	<td>	FYBERHOME	</td>	<td>	BC-98-89-FB-EB-98	</td>	<td>	FHTT03FBEB98	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001209	</td>	</tr>
+            <tr>	<td>	72	</td>	<td>	FYBERHOME	</td>	<td>	D0-04-92-5D-1D-C0	</td>	<td>	FHTT065D1DC0	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001210	</td>	</tr>
+            <tr>	<td>	73	</td>	<td>	FYBERHOME	</td>	<td>	9C-88-AD-83-DA-38	</td>	<td>	FHTT0783DA38	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001211	</td>	</tr>
+            <tr>	<td>	74	</td>	<td>	FIBER	</td>	<td>	C4700B55F208	</td>	<td>	MONU0055F209	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001212	</td>	</tr>
+            <tr>	<td>	75	</td>	<td>	FIBER	</td>	<td>	006D61D64860	</td>	<td>	MONU00D64861	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001213	</td>	</tr>
+            <tr>	<td>	76	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D4D1D7	</td>	<td>	UY1H455572DQ6	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001214	</td>	</tr>
+            <tr>	<td>	77	</td>	<td>	INTELBRAS	</td>	<td>	D8778B699FF5	</td>	<td>	UY1I2824311NW	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001215	</td>	</tr>
+            <tr>	<td>	78	</td>	<td>	INTELBRAS	</td>	<td>	180D2CDDB444F	</td>	<td>	UY1H2888785X	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001216	</td>	</tr>
+            <tr>	<td>	79	</td>	<td>	INTELBRAS	</td>	<td>	443B328150FC	</td>	<td>	ITBS328150FC	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001217	</td>	</tr>
+            <tr>	<td>	80	</td>	<td>	INTELBRAS	</td>	<td>	443B32815332	</td>	<td>	ITBS32815332	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001218	</td>	</tr>
+            <tr>	<td>	81	</td>	<td>	INTELBRAS	</td>	<td>	808FE89EBC2B	</td>	<td>	OSII4115439X9	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001219	</td>	</tr>
+            <tr>	<td>	82	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC7C1	</td>	<td>	OSII160412091	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001220	</td>	</tr>
+            <tr>	<td>	83	</td>	<td>	INTELBRAS	</td>	<td>	808FE89CD899	</td>	<td>	OSII41116324NX	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001221	</td>	</tr>
+            <tr>	<td>	84	</td>	<td>	INTELBRAS	</td>	<td>	443B3221BF3A	</td>	<td>	OSII4925537812	</td>	<td>	110 B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001222	</td>	</tr>
+            <tr>	<td>	85	</td>	<td>	PHYHOME	</td>	<td>	2057AF359D18	</td>	<td>	FTHC0A174318	</td>	<td>	P20	</td>	<td>	142	</td>	<td>	ONT	</td>	<td>	001223	</td>	</tr>
+            <tr>	<td>	86	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4E108E	</td>	<td>	2012220422004700	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001224	</td>	</tr>
+            <tr>	<td>	87	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4E10A6	</td>	<td>	2012220422004700	</td>	<td>	SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001225	</td>	</tr>
+            <tr>	<td>	88	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C405E86	</td>	<td>	SHLN3C405E86	</td>	<td>	 SH1020W	</td>	<td>	150	</td>	<td>	ONT	</td>	<td>	001226	</td>	</tr>
+            <tr>	<td>	89	</td>	<td>	FIBERHOME	</td>	<td>	18-A3-E8-3D-DC-D8	</td>	<td>	FHTT053DDCD8	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001227	</td>	</tr>
+            <tr>	<td>	90	</td>	<td>	FIBERHOME	</td>	<td>	FC-A6-CD-F8-D2-C8	</td>	<td>	FHTT91F8D2C8	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001228	</td>	</tr>
+            <tr>	<td>	91	</td>	<td>	FIBERHOME	</td>	<td>	FC-A6-CD-56-00-88	</td>	<td>	FHTT91560088	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001229	</td>	</tr>
+            <tr>	<td>	92	</td>	<td>	FIBERHOME	</td>	<td>	FC-A6-CD-EA-81-C0	</td>	<td>	FHTT91EA81C0	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001230	</td>	</tr>
+            <tr>	<td>	93	</td>	<td>	FIBERHOME	</td>	<td>	F0-40-7B-1E-6C-88	</td>	<td>	FHTT101E6C88	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001231	</td>	</tr>
+            <tr>	<td>	94	</td>	<td>	FIBERHOME	</td>	<td>	D0-04-92-66-48-08	</td>	<td>	FHTT06664808	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001232	</td>	</tr>
+            <tr>	<td>	95	</td>	<td>	FIBERHOME	</td>	<td>	00-0A-C2-B0-32-00	</td>	<td>	FHTT00B03200	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001233	</td>	</tr>
+            <tr>	<td>	96	</td>	<td>	FIBERHOME	</td>	<td>	18-A3-E8-BE-EB-30	</td>	<td>	FHTT05BEEB30	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001234	</td>	</tr>
+            <tr>	<td>	97	</td>	<td>	FIBERHOME	</td>	<td>	F0-40-7B-1D-9A-A0	</td>	<td>	FHTT101D9AA0	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001235	</td>	</tr>
+            <tr>	<td>	98	</td>	<td>	FIBERHOME	</td>	<td>	18-A3-E8-49-CE-80	</td>	<td>	FHTT0549CE80	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001236	</td>	</tr>
+            <tr>	<td>	99	</td>	<td>	FIBER	</td>	<td>	C4700B55FA70	</td>	<td>	MONU0055FA71	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001237	</td>	</tr>
+            <tr>	<td>	100	</td>	<td>	FIBER	</td>	<td>	006D1D64D08	</td>	<td>	MONU00D64D08	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001238	</td>	</tr>
+            <tr>	<td>	101	</td>	<td>	FIBER	</td>	<td>	C4700B565930	</td>	<td>	MONU00565931	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001239	</td>	</tr>
+            <tr>	<td>	102	</td>	<td>	FIBER	</td>	<td>	C4700B566AD0	</td>	<td>	MONU00566AD1	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001240	</td>	</tr>
+            <tr>	<td>	103	</td>	<td>	FIBER	</td>	<td>	C4700B566DD0	</td>	<td>	MONU00566DD1	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001241	</td>	</tr>
+            <tr>	<td>	104	</td>	<td>	FIBER	</td>	<td>	006D61F426A8	</td>	<td>	MONU00F426A9	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001242	</td>	</tr>
+            <tr>	<td>	105	</td>	<td>	FIBER	</td>	<td>	C4700B566D50	</td>	<td>	MONU00566D51	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001243	</td>	</tr>
+            <tr>	<td>	106	</td>	<td>	FIBER	</td>	<td>	006D61F3FE78	</td>	<td>	MONU00F3FE79	</td>	<td>		</td>	<td>		</td>	<td>	ONU	</td>	<td>	001244	</td>	</tr>
+            <tr>	<td>	107	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC43C	</td>	<td>	OSII1706313L0	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001245	</td>	</tr>
+            <tr>	<td>	108	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC958	</td>	<td>	OSII1605319CP	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001246	</td>	</tr>
+            <tr>	<td>	109	</td>	<td>	INTELBRAS	</td>	<td>	443B3221BF3C	</td>	<td>	OSII492537287	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001247	</td>	</tr>
+            <tr>	<td>	110	</td>	<td>	INTELBRAS	</td>	<td>	24FDODBF4BB1	</td>	<td>	OSII1604959KN	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001248	</td>	</tr>
+            <tr>	<td>	111	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBCCAAA	</td>	<td>	OSII1504527DU	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001249	</td>	</tr>
+            <tr>	<td>	112	</td>	<td>	INTELBRAS	</td>	<td>	443B3231A938	</td>	<td>	OSII5022865AQ	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001250	</td>	</tr>
+            <tr>	<td>	113	</td>	<td>	INTELBRAS	</td>	<td>	808FE8CA3942	</td>	<td>	OSII4613337XH	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001251	</td>	</tr>
+            <tr>	<td>	114	</td>	<td>	INTELBRAS	</td>	<td>	808FE89EB1CE	</td>	<td>	OSII4115949WE	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001252	</td>	</tr>
+            <tr>	<td>	115	</td>	<td>	INTELBRAS	</td>	<td>	808FE89EBC39	</td>	<td>	OSII4115438LD	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001253	</td>	</tr>
+            <tr>	<td>	116	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC5A6	</td>	<td>	OSII160574W9	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001254	</td>	</tr>
+            <tr>	<td>	117	</td>	<td>	INTELBRAS	</td>	<td>	808FE8CA3945	</td>	<td>	OSII4613332JY	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001255	</td>	</tr>
+            <tr>	<td>	118	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDBBD2	</td>	<td>	OSII1702468XY	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001256	</td>	</tr>
+            <tr>	<td>	119	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D4CA779	</td>	<td>	UY1H4553800KT	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001257	</td>	</tr>
+            <tr>	<td>	120	</td>	<td>	INTELBRAS	</td>	<td>	180D22CDB45B1	</td>	<td>	UY1H28891556A	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001258	</td>	</tr>
+            <tr>	<td>	121	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D4D2387	</td>	<td>	UY1H4557600X1	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001259	</td>	</tr>
+            <tr>	<td>	122	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D2CDD35	</td>	<td>	UY1H2870526AQ	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001260	</td>	</tr>
+            <tr>	<td>	123	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D2D128D	</td>	<td>	UY1H287735470	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001261	</td>	</tr>
+            <tr>	<td>	124	</td>	<td>	INTELBRAS	</td>	<td>	44B3328151B0	</td>	<td>	ITBS328151B0	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001262	</td>	</tr>
+            <tr>	<td>	125	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DC03200	</td>	<td>	OSII1701292Z4	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001263	</td>	</tr>
+            <tr>	<td>	126	</td>	<td>	INTELBRAS	</td>	<td>	24FD0DBDC9A4	</td>	<td>	OSII1605261K1	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001264	</td>	</tr>
+            <tr>	<td>	127	</td>	<td>	INTELBRAS	</td>	<td>	24FD0D2CFBFB	</td>	<td>	UY1H28744650M	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001265	</td>	</tr>
+            <tr>	<td>	128	</td>	<td>	INTELBRAS	</td>	<td>	808FE8CA3940	</td>	<td>	OSII4613336E8	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001266	</td>	</tr>
+            <tr>	<td>	129	</td>	<td>	INTELBRAS	</td>	<td>	808FE89EB1C8	</td>	<td>	OSII4115947AZ	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001267	</td>	</tr>
+            <tr>	<td>	130	</td>	<td>	INTELBRAS	</td>	<td>	24FDOD4D2297	</td>	<td>	UY1H5574804U	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001268	</td>	</tr>
+            <tr>	<td>	131	</td>	<td>	INTELBRAS	</td>	<td>	443B3280B6F2	</td>	<td>	OSIJ1024178L6	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001269	</td>	</tr>
+            <tr>	<td>	132	</td>	<td>	INTELBRAS	</td>	<td>	443B3231A995	</td>	<td>	OSII50227671R	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001270	</td>	</tr>
+            <tr>	<td>	133	</td>	<td>	INTELBRAS	</td>	<td>	808FE89CD8B1	</td>	<td>	OSII416329PH	</td>	<td>	ONU 110 B	</td>	<td>		</td>	<td>		</td>	<td>	001271	</td>	</tr>
+            <tr>	<td>	134	</td>	<td>	HUAWEI	</td>	<td>	70FD45D6184A-52(9)	</td>	<td>	48575443D8469A9F	</td>	<td>	EchoLife EG8010H	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001272	</td>	</tr>
+            <tr>	<td>	135	</td>	<td>	HUAWEI	</td>	<td>	F41D6B1D24BF-C7(9)	</td>	<td>	485754438037DE9E	</td>	<td>	EchoLife EG8010H	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001273	</td>	</tr>
+            <tr>	<td>	136	</td>	<td>	HUAWEI	</td>	<td>	70FD45D6185C-64(9)	</td>	<td>	4857443D8469C9F	</td>	<td>	EchoLife EG8010H	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001274	</td>	</tr>
+            <tr>	<td>	137	</td>	<td>	HUAWEI	</td>	<td>	70FD45D6180B13(9)	</td>	<td>	48575443D84693F	</td>	<td>	EchoLife EG8010H	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001275	</td>	</tr>
+            <tr>	<td>	138	</td>	<td>	HUAWEI	</td>	<td>	70FD45D617B1-B9(9)	</td>	<td>	48575443D846899F	</td>	<td>	EchoLife EG8010H	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001276	</td>	</tr>
+            <tr>	<td>	139	</td>	<td>	HUAWEI	</td>	<td>	70FD45D61880-88(9)	</td>	<td>	4857443D846A09F	</td>	<td>	EchoLife EG8010H	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001277	</td>	</tr>
+            <tr>	<td>	140	</td>	<td>	HUAWEI	</td>	<td>	129CE7D57A32-C4(10)	</td>	<td>	HWTCBD23DC32	</td>	<td>	EchoLife EG8310M 	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001278	</td>	</tr>
+            <tr>	<td>	141	</td>	<td>	HUAWEI	</td>	<td>	54511B87FEE3-EC(10)	</td>	<td>	HWTC87FEE368	</td>	<td>	EchoLife EG8310M 	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001279	</td>	</tr>
+            <tr>	<td>	142	</td>	<td>	FIBERHOME	</td>	<td>	FC-A6-CD-F9-20-C8	</td>	<td>	FHTT91F920C8	</td>	<td>	AN5506-02-B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001280	</td>	</tr>
+            <tr>	<td>	143	</td>	<td>	FIBERHOME	</td>	<td>	CC-06-77-46-FE-D0	</td>	<td>	FHTT1146FED0	</td>	<td>	AN5506-02-B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001281	</td>	</tr>
+            <tr>	<td>	144	</td>	<td>	FIBERHOME	</td>	<td>	CC-50-0A-9C-F4-C0	</td>	<td>	FHTT239CF4C0	</td>	<td>	AN5506-02-B	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001282	</td>	</tr>
+            <tr>	<td>	145	</td>	<td>	FIBERHOME	</td>	<td>	E4-2F-26-E3-BF-C2	</td>	<td>	FHTT09E3BFC2	</td>	<td>	AN5506-01-A	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001283	</td>	</tr>
+            <tr>	<td>	146	</td>	<td>	FIBERHOME	</td>	<td>	E4-2F-26-E3-BE-E2	</td>	<td>	FHTT09E3BEE2	</td>	<td>	AN5506-01-A	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001284	</td>	</tr>
+            <tr>	<td>	147	</td>	<td>	FIBERHOME	</td>	<td>	E4-2F-26-AF-A6-F2	</td>	<td>	FHTT094FA6F2	</td>	<td>	AN5506-01-A	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001285	</td>	</tr>
+            <tr>	<td>	148	</td>	<td>	FIBERHOME	</td>	<td>	E4-2F-26-E3-C1-E2	</td>	<td>	FHTT09E3C1E2	</td>	<td>	AN5506-01-A	</td>	<td>		</td>	<td>	ONU	</td>	<td>	001286	</td>	</tr>
+            <tr>	<td>	149	</td>	<td>	INTELBRAS	</td>	<td>	30E1F1A1A675	</td>	<td>	KYQL2803542TM	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>	Roteador	</td>	<td>	001287	</td>	</tr>
+            <tr>	<td>	150	</td>	<td>	INTELBRAS	</td>	<td>	30E1F1A1DC45	</td>	<td>	KYQL2804526SD	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>	Roteador	</td>	<td>	001288	</td>	</tr>
+            <tr>	<td>	151	</td>	<td>	INTELBRAS	</td>	<td>	30E1F1A1849B	</td>	<td>	KYQL28029236P	</td>	<td>	W6-1500	</td>	<td>	273	</td>	<td>	Roteador	</td>	<td>	001289	</td>	</tr>
+            <tr>	<td>	152	</td>	<td>	INTELBRAS	</td>	<td>	30E1F12D4ABA	</td>	<td>	GUTL1407901JI	</td>	<td>	W5-1200G	</td>	<td>		</td>	<td>	Roteador	</td>	<td>	001290	</td>	</tr>
+            <tr>	<td>	153	</td>	<td>	INTELBRAS	</td>	<td>	D8365FD29D94	</td>	<td>	ITBS5FD29D94	</td>	<td>	WIFIBER AX 1800	</td>	<td>	 268	</td>	<td>	ont	</td>	<td>	001291	</td>	</tr>
+            <tr>	<td>	154	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C51C10E	</td>	<td>	2012220614001390	</td>	<td>	SH1020W	</td>	<td>		</td>	<td>	ont	</td>	<td>	001292	</td>	</tr>
+            <tr>	<td>	155	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C4E1086	</td>	<td>	2012220422004700	</td>	<td>	SH1020W	</td>	<td>		</td>	<td>	ont	</td>	<td>	001293	</td>	</tr>
+            <tr>	<td>	156	</td>	<td>	SHORELINE	</td>	<td>	A8BF3C465EC2	</td>	<td>	2012210904003350	</td>	<td>	SH1020W	</td>	<td>		</td>	<td>	ont	</td>	<td>	001294	</td>	</tr>    
+            
+        </tbody>
+    </table>
+
+    <script>
+        function filtrarTabela() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let tabela = document.getElementById("tabelaEquipamentos");
+            let linhas = tabela.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+
+            for (let i = 0; i < linhas.length; i++) {
+                let colunas = linhas[i].getElementsByTagName("td");
+                let encontrado = false;
+
+                for (let j = 0; j < colunas.length; j++) {
+                    if (colunas[j].innerText.toLowerCase().includes(input)) {
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                linhas[i].style.display = encontrado ? "" : "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
